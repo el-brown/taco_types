@@ -7,3 +7,13 @@ Rails.application.routes.draw do
   end
   # resources :things
 end
+
+
+
+# namespace :api do
+#   namespace :v1 do
+#     resources :authors do
+#       resources :books
+#     end
+#   end
+# end

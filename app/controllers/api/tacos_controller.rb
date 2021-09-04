@@ -16,9 +16,12 @@ class Api::TacosController < ApplicationController
   end
 
   def update
-    taco = Taco.find(params[:id])
-    taco.update(complete: !taco.complete)
-    render json: taco
+    @taco = Taco.find(params[:id])
+    if (@taco.update(taco_params))
+      render json: @taco
+    else
+      render json: {errors: duck.errors }, status: :unprocessable_entity
+    end
   end
 
   def destroy

@@ -31,14 +31,24 @@ const Tacos = (props) => {
     };
   };
 
+  const updateTaco = async (taco) => {
+    try {
+      let res = await axios.put(`/api/tacos/${taco.id}`, taco)
+      let newTacos = tacos.map((t) => (t.id === taco.id ? res.data : t));
+      setTacos(newTacos)
+    } catch (error) {
+      
+    }
+  }
+
   const renderTacos = () => {
-      return tacos.map((t) => <Taco key={t.id} {...t} />);
+      return tacos.map((t) => <Taco updateTaco={updateTaco} key={t.id} {...t} />);
   };
 
   return (
     <div className="App">
       <h1 className="App-header">Welcome to Tacos!</h1>
-      <TacoForm addTaco={addTaco}/>
+      <TacoForm updateTaco={updateTaco} addTaco={addTaco}/>
       {renderTacos()}
     </div>
   );

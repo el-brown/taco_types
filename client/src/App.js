@@ -1,30 +1,15 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-// import { useEffect } from 'react';
-import './App.css';
-import Tacos from './components/Tacos';
+import React, { Fragment } from 'react';
+import {Route,} from 'react-router-dom';
+import AppTacos from './AppTacos';
+import About from './About';
+import NavBar from './components/NavBar';
 
-function App() {
-  const [tacos, setTheTacos] = useState([])
-
-  useEffect(() => {
-    getTacos()
-  }, []);
-
-  const getTacos = async () => {
-    try {
-      let res = await axios.get("/api/tacos")
-      setTheTacos(res.data)
-    } catch (error) {
-      alert("NOOOOOOOOOOOOOO. It didn't work.")
-    };
-  }; 
-
-  return (
-    <div className="App">
-     <Tacos tacos = {tacos}/>
-    </div>
-  );
-};
+const App = () => (
+  <Fragment>
+    <NavBar />
+  <Route exact path="/" component={AppTacos} />
+  <Route exact path="/about" component={About} />
+  </Fragment>
+);
 
 export default App;

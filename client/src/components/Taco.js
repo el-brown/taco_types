@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Taco = (tacos) => {
+const Taco = ({taco}) => {
+  console.log(taco)
   return (
     <div>
-      <h1>A Single Taco {tacos.name}</h1>
-      <p>It's ingredients{tacos.ingredients}</p>
-      <p>A like button{tacos.likes}</p>
+      <h2>A Single Taco </h2>
+      <p>It's ingredients:</p>
+      <p>A like button</p>
       <p>An edit button</p>
       <p>Optional - Reviews Link</p>
     </div>

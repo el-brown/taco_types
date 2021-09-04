@@ -1,7 +1,8 @@
 class Api::TacosController < ApplicationController
 
   def index
-    render json: Taco.all
+    tacos = Taco.all
+    render json: tacos
   end
 
   def create
@@ -10,7 +11,7 @@ class Api::TacosController < ApplicationController
     if (taco.save)
       render json: taco
     else
-      render json: {erros: item.errors}, status: :unprocessable_entity
+      render json: {errors: item.errors}, status: :unprocessable_entity
     end
   end
 

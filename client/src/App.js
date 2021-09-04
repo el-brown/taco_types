@@ -5,7 +5,7 @@ import './App.css';
 import Tacos from './components/Tacos';
 
 function App() {
-  const [theTacos, setTheTacos] = useState([])
+  const [tacos, setTheTacos] = useState([])
 
   useEffect(() => {
     getTacos()
@@ -14,7 +14,7 @@ function App() {
   const getTacos = async () => {
     try {
       let res = await axios.get("/api/tacos")
-      setTheTacos(res.data) 
+      setTheTacos(res.data)
     } catch (error) {
       alert("NOOOOOOOOOOOOOO. It didn't work.")
     };
@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-     <Tacos tacos = {theTacos}/>
+     <Tacos tacos = {tacos}/>
     </div>
   );
 };

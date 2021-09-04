@@ -3,12 +3,12 @@ import React from 'react';
 import Taco from "./Taco";
 
 
-const Tacos = ({name, ingredients, likes}) => {
+const Tacos = ({tacos}) => {
 
   return (
     <div>
       <h1>Tacos Here</h1>
-      <Taco />
+      {tacos.map((taco) => <Taco key={taco.id} {...tacos}/>)}
     </div>
   );
 };

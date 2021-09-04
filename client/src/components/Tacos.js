@@ -1,26 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from "axios";
+import React from 'react';
+// import axios from "axios";
+import Taco from "./Taco";
 
 
-const Tacos = (props) => {
-  const [theTacos, setTheTacos] = useState([]);
+const Tacos = ({name, ingredients, likes}) => {
 
-  useEffect (() => {
-    getTacos()
-  },[])
-
-  const getTacos = async () => {
-    try {
-      let res = await axios.get("/api/tacos")
-      setTheTacos(res.data)
-    } catch (err) {
-      alert("error occured getting tacos. Debug")
-    }
-  }
   return (
-    <>
+    <div>
       <h1>Tacos Here</h1>
-    </>
-  )
-}
+      <Taco />
+    </div>
+  );
+};
+
 export default Tacos

@@ -1,37 +1,34 @@
-import React, {useState} from 'react';
-// import axios from "axios";
+import React, {useState, useEffect} from 'react';
+import axios from "axios";
 import Taco from "./Taco";
 
 
 const Tacos = (props) => {
-  const [tacos, setTheTacos] = useState([])
+  const [tacos, setTacos] = useState([])
+  
+  useEffect(() => {
+    getTacos()
+  }, []);
+  
+  const getTacos = async () => {
+    try {
+      let res = await axios.get("/api/tacos")
+      setTacos(res.data)
+    } catch (error) {
+      alert("NOOOOOOOOOOOOOO. It didn't work.")
+    };
+  }; 
 
-//   useEffect(() => {
-//     getTacos()
-//   }, []);
+  const renderTacos = () => {
+      return tacos.map((t) => <Taco key={t.id} {...t} />);
+  };
 
-//   const getTacos = async () => {
-//     try {
-//       let res = await axios.get("/api/tacos")
-//       setTheTacos(res.data)
-//     } catch (error) {
-//       alert("NOOOOOOOOOOOOOO. It didn't work.")
-//     };
-//   }; 
-
-//   return (
-//     <div className="App">
-//      <Tacos tacos = {tacos}/>
-//     </div>
-//   );
-// };
-
+  
   return (
-    <div>
-      <h1>Tacos Here</h1>
-      {/* {tacos.map((taco) => <Taco key={taco.id} {...taco}/>)} */}
+    <div className="App">
+     {renderTacos()}
     </div>
   );
-};
-
-export default Tacos
+  };
+  
+  export default Tacos;

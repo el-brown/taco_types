@@ -25,8 +25,8 @@ class Api::TacosController < ApplicationController
   end
 
   def destroy
-    Taco.find(params[:id]).destroy
-    render json: { message: "Taco deleted" }
+    @taco = Taco.find(params[:id])
+    render json: @taco.destroy
   end
 
 

@@ -41,8 +41,16 @@ const Tacos = (props) => {
     }
   }
 
+  const deleteTaco = (id) => {
+    const filteredTacos = tacos.filter((t) => t.id !== id)
+    setTacos(filteredTacos)
+  }
+
   const renderTacos = () => {
-      return tacos.map((t) => <Taco updateTaco={updateTaco} key={t.id} {...t} />);
+      return tacos.map((t) => <Taco 
+      updateTaco={updateTaco} 
+      deleteTaco={deleteTaco}
+      key={t.id} {...t} />);
   };
 
   return (

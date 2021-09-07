@@ -18,7 +18,6 @@ const Tacos = (props) => {
       let res = await axios.get("/api/tacos")
       setTacos(res.data)
     } catch (error) {
-      alert("Ya didn't get the tacos.")
     };
   }; 
 
@@ -27,7 +26,7 @@ const Tacos = (props) => {
       let res = await axios.post(`/api/tacos`, taco)
       setTacos([res.data, ...tacos]);
     } catch (error) {
-      alert("Ya failed to add the taco")
+      alert("Oh no! You forgot something!")
     };
   };
 

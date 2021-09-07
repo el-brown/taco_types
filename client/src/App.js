@@ -9,8 +9,8 @@ const App = () => (
     <NavBar />
     <div className="App">
     <Switch>
-  <Route exact path="/" component={Tacos} />
-  <Route exact path="/about" component={About} />
+      <Route exact path="/" component={Tacos} />
+      <Route exact path="/about" component={About} />
   </Switch>
     </div>
   </>

@@ -1,3 +1,4 @@
 class Taco < ApplicationRecord
-  validates :name, :phrase, presence: true
+  has_many :reviews, dependent: :destroy
+  validates :name, :ingredients, presence: true
 end

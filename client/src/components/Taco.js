@@ -1,11 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import TacoForm from './TacoForm';
+import { useHistory } from "react-router";
 
-const Taco = ({id, name, ingredients, likes, updateTaco, deleteTaco}) => {
+const Taco = (props) => {
+  const {id, name, ingredients, likes, updateTaco, deleteTaco} = props
   const [showForm, setShowForm] = useState()
 
-const handleDelete = async (id) => {
+  const history = useHistory();
+
+  const handleDelete = async (id) => {
     let res = await axios.delete(`api/tacos/${id}`)
     deleteTaco(res.data.id)
 }
@@ -30,6 +34,7 @@ const handleDelete = async (id) => {
           />
         )}
       <p><button onClick={() => handleDelete(id)}>Delete</button></p>
+      <p><button onClick={() => history.push(`/${id}/Reviews`)}>Reviews</button></p>
       </div>
     </div>
   );

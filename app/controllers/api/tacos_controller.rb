@@ -11,7 +11,7 @@ class Api::TacosController < ApplicationController
     if (taco.save)
       render json: taco
     else
-      render json: {errors: item.errors}, status: :unprocessable_entity
+      render json: {errors: taco.errors}, status: :unprocessable_entity
     end
   end
 
@@ -20,7 +20,7 @@ class Api::TacosController < ApplicationController
     if (@taco.update(taco_params))
       render json: @taco
     else
-      render json: {errors: duck.errors }, status: :unprocessable_entity
+      render json: {errors: taco.errors }, status: :unprocessable_entity
     end
   end
 

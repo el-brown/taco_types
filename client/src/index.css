@@ -84,3 +84,18 @@ button {
 	display: inline-block;
 	transition: all 0.3s ease 0s;
 }
+
+.form {
+  padding-top: 60px;
+}
+
+.about-content {
+  display:flex;
+  margin: 50px;
+  justify-content: space-evenly;
+
+}
+
+.article {
+  padding: 0 160px 0 80px;
+}

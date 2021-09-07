@@ -14,8 +14,11 @@ const handleDelete = async (id) => {
     <div className="cards">
       {console.log(id)}
       <h2>{name}</h2>
+      <div className="ingredients">
       <p>Ingredients: {ingredients}</p>
-      <p><button>Like</button> -{likes}-</p>
+      </div>
+      <div className="buttons">
+      {/* <p><button>Like</button> {likes}</p> */}
       <p><button onClick={() => setShowForm(!showForm)}>
         {showForm ? "Done" : "Edit"}</button></p>
         {showForm && (
@@ -27,7 +30,7 @@ const handleDelete = async (id) => {
           />
         )}
       <p><button onClick={() => handleDelete(id)}>Delete</button></p>
-      <p>Optional - Reviews Link</p>
+      </div>
     </div>
   );
 };

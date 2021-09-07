@@ -55,9 +55,13 @@ const Tacos = (props) => {
 
   return (
     <div className="App">
-      <h1 className="App-header">Welcome to Tacos!</h1>
+      <h1 className="App-header">Checkout these Tacos</h1>
+      <div className="content">
       <TacoForm updateTaco={updateTaco} addTaco={addTaco}/>
+      <div className="tacos">
       {renderTacos()}
+      </div>
+      </div>
     </div>
   );
   };

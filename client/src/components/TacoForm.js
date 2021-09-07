@@ -34,7 +34,9 @@ const TacoForm = ({updateTaco, name, ingredients, id, addTaco}) => {
           setTacoIngredients(e.target.value)
           }}
           />
+        <div className="newTacoButton">
         <button type="submit">{id ? 'Edit Taco' : 'New Taco'}</button>
+        </div>
       </form>
     </div>
   )

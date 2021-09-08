@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import TacoForm from './TacoForm';
 import { useHistory } from "react-router";
+import Reviews from './Reviews';
 
 const Taco = (props) => {
   const {id, name, ingredients, likes, updateTaco, deleteTaco} = props
@@ -16,7 +17,6 @@ const Taco = (props) => {
 
   return (
     <div className="cards">
-      {console.log(id)}
       <h2>{name}</h2>
       <div className="ingredients">
       <p>Ingredients: {ingredients}</p>
@@ -34,7 +34,7 @@ const Taco = (props) => {
           />
         )}
       <p><button onClick={() => handleDelete(id)}>Delete</button></p>
-      <p><button onClick={() => history.push(`/${id}/Reviews`)}>Reviews</button></p>
+      <p><button onClick={() => history.push(`/${id}/Reviews`, {id})}>Reviews</button></p>
       </div>
     </div>
   );

@@ -1,14 +1,16 @@
 class Api::ReviewsController < ApplicationController
+  before_action :set_taco
+  before_action :set_recipe, only: [:update, :destroy]
 
     def index
-      reviews = Review.all
+      @reviews = Review.all
       render json: reviews
     end
   
     def create
-      review = Review.new(review_params)
+      @review = @taco.review.new(review_params)
       review.likes = 0
-      if (review.save)
+      if (@review.save)
         render json: review
       else
         render json: {errors: review.errors}, status: :unprocessable_entity
@@ -16,16 +18,14 @@ class Api::ReviewsController < ApplicationController
     end
   
     def update
-      @review = Review.find(params[:id])
       if (@review.update(review_params))
-        render json: @review
+        render json: review
       else
         render json: {errors: review.errors }, status: :unprocessable_entity
       end
     end
   
     def destroy
-      @review = Review.find(params[:id])
       render json: @review.destroy
     end
   
@@ -35,6 +35,16 @@ class Api::ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:name, :ingredients)
     end
+
+    def set_taco  
+      @taco = Taco.find(params[:taco_id])
+    end
+
+    def set_recipe
+      @recipe = @taco.recipe.find(params[:id])
+    end
+
+
   
   end
   
